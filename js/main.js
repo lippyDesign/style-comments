@@ -1,5 +1,5 @@
 // global var for settings in comment font weight and color
-let globalCommentSettings = {color: 'black', fontWeight: '400', background: 'white'}
+let globalCommentSettings = {color: 'black', fontWeight: 'normal', background: 'white'}
 // total amount of comments on the page, initially 0
 let numComments = 0
 // display comment count on the page
@@ -97,7 +97,7 @@ function changeSettings(item) {
     const fontWeightVar = fontWeights.find(current => current === item);
     if (fontWeightVar) {
         //set font weight, default is 400
-        globalCommentSettings.fontWeight = fontWeightVar ? fontWeightVar : '400';
+        globalCommentSettings.fontWeight = fontWeightVar ? fontWeightVar : 'normal';
         document.getElementById('username').style.fontWeight = globalCommentSettings.fontWeight;
         document.getElementById('commentBody').style.fontWeight = globalCommentSettings.fontWeight;
     }
@@ -152,12 +152,15 @@ function addComment(messageLocation, authorName, messageContent, messageColor = 
     comment.className = 'comment';
     const coloredAuthor = messageColor ? authorName.fontcolor(messageColor) : 'black';
     const coloredMessage = messageColor ? messageContent.fontcolor(messageColor) : 'black';
+    // get Date
+    let date = new Date;
+    date = date.toDateString();
     comment.innerHTML = (`
-        <p class="commentAuthor${numComments}">${coloredAuthor}</p>
-        <p class="commentBody${numComments}">${coloredMessage}</p>
+        <p class="commentAuthor${numComments}">Date: ${date}<br>Author: ${coloredAuthor}</p>
+        <p class="commentBody${numComments}">Comment: ${coloredMessage}</p>
     `)
     document.getElementById(messageLocation).appendChild(comment);
-    messageWeight ? document.getElementById(`numComments${numComments}`).style.fontWeight = messageWeight : document.getElementById(`numComments${numComments}`).style.fontWeight = "400";
+    messageWeight ? document.getElementById(`numComments${numComments}`).style.fontWeight = messageWeight : document.getElementById(`numComments${numComments}`).style.fontWeight = "normal";
     messageBackground ? document.getElementById(`numComments${numComments}`).style.backgroundColor = messageBackground : document.getElementById(`numComments${numComments}`).style.backgroundColor = "white";
     // incriment comment Count By One
     numComments ++;
