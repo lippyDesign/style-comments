@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Comment Form">
+	<meta name="author" content="Volodymyr Lipunov">
+	<title>Comment Form</title>
+	<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+	<header>
+		<h1>Comment Styler</h1>
+		<h2>Style Your Comments</h2>
+		<h3 id="commentCounter"></h3>
+	</header>
+	<main>
+		<section id="commentSettings">
+			<ul id="colorSettingsList"></ul>
+			<ul id="fontWeightSettingsList"></ul>
+			<ul id="backgroundColorSettingsList"></ul>
+			<p id="settingsPar"><span id="colorPar"></span><span id="backgroundPar"></span><span id="fontWeightPar"></span></p>
+		</section>
+		<form id="commentForm">
+			<input type="text" id="username" placeholder="your username">
+			<textarea placeholder="comment" id="commentBody" cols="30" rows="10"></textarea>
+			<button type="button" onclick="validateForm()">Submit</button>
+		</form>
+		<p id="helperMessage"></p>
+	</main>
+	<section>
+		<ul id="commentList"></ul>
+	</section>
+	<script src="js/main.js"></script>
+</body>
+</html>
